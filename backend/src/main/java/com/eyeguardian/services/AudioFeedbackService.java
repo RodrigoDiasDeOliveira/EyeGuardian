@@ -12,19 +12,5 @@ public class AudioFeedbackService {
     }
 }
 
-@Service
-public class LocationService {
-    public String getCurrentLocation() {
-        // Simulação de obtenção de localização
-        return "Latitude: 40.7128, Longitude: -74.0060";
-    }
-}
 
-@Configuration
-public class AzureConfig {
-    @Bean
-    public String azureConnection() {
-        // Simulação de configuração de conexão com Azure
-        return "Azure Connection Initialized";
-    }
-}
+

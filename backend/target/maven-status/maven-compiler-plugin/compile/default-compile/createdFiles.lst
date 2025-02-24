@@ -1,0 +1,8 @@
+com/eyeguardian/model/RecognizedObject.class
+com/eyeguardian/controller/RecognizedObjectController.class
+com/eyeguardian/service/AudioFeedbackService.class
+com/eyeguardian/service/LocationService.class
+com/eyeguardian/service/AzureConfig.class
+com/eyeguardian/services/RecognizedObjectService.class
+com/eyeguardian/repository/RecognizedObjectRepository.class
+com/eyeguardian/models/LocationData.class

@@ -24,8 +24,8 @@ Modo de Vibração ou Feedback Tátil: Em situações de sobrecarga auditiva (co
 
 Tecnologias Envolvidas:
 Visão Computacional e Reconhecimento de Imagens:
-OpenCV ou TensorFlow Lite para processar as imagens localmente no dispositivo.
-API de Serviços na Nuvem: Como o Google Cloud Vision API, Microsoft Azure Face API ou Amazon Rekognition, para reconhecimento facial e de objetos.
+Yolov para processar as imagens localmente no dispositivo.(***para outra versao****)
+API de Serviços na Nuvem: Como o Google Cloud Vision API, Microsoft Azure Face API, para reconhecimento facial e de objetos.
 NLP e Conversão de Texto para Voz:
 Ferramentas de Processamento de Linguagem Natural (NLP) como Dialogflow ou Hugging Face para fornecer respostas mais naturais.
 Text-to-Speech APIs: Para conversão das descrições visuais em feedback auditivo.
@@ -36,7 +36,7 @@ Atualizando:
 Captura de Dados de GPS e Mapas
 Função: Capturar a localização atual do usuário via GPS e usar APIs de mapas (Google Maps API) para fornecer informações sobre o ambiente em torno, como pontos de interesse e rotas.
 Como Funciona:
-O aplicativo irá capturar a posição atual usando o Google Location Services.
+O aplicativo irá capturar a posição atual usando o Google Location Services.***outros servicos na atualizacao***
 O usuário poderá receber informações contextuais sobre o ambiente baseado em sua localização, como a presença de obstáculos ou estabelecimentos próximos.
 Mapas offline podem ser integrados para permitir que o app funcione sem conexão de dados.
 2. Feedback Auditivo com Base em Proximidade
@@ -50,48 +50,21 @@ Android Location Services: Para capturar a localização atual em tempo real.
 Android Text-to-Speech (TTS): Para converter os dados e as informações contextuais em feedback auditivo.
 
 Arquitetura de servicos:
-1. TensorFlow Lite (No Dispositivo Móvel)
-Função: Realizar o reconhecimento facial e de objetos diretamente no dispositivo, sem a necessidade de conexão constante com a internet, o que melhora a eficiência e permite respostas rápidas em tempo real.
-Como Funciona:
-Treinar os modelos de reconhecimento de imagens e rostos utilizando TensorFlow.
-Converter esses modelos para a versão TensorFlow Lite, otimizada para dispositivos móveis, garantindo que o processamento seja leve e rápido.
-O modelo será carregado no aplicativo e usará a câmera do dispositivo para identificar rostos e objetos.
+Dados em teste.
 
-2. Azure Cognitive Services (API na Nuvem)
-Função: Fornecer funcionalidades adicionais baseadas em nuvem, como reconhecimento avançado de objetos, processamento de linguagem natural (para gerar respostas auditivas), e análises mais complexas que requerem maior poder computacional.
-Serviços Envolvidos:
-Azure Face API: Para reconhecimento facial mais avançado ou quando o processamento local não for suficiente.
-Azure Computer Vision API: Para identificar objetos e ambientes de forma mais precisa ou realizar análises mais detalhadas de imagens.
-Azure Speech API: Para conversão de texto para fala (Text-to-Speech) e interpretação de comandos de voz do usuário.
-Como Funciona:
-Quando o processamento local (via TensorFlow Lite) não for suficiente, o aplicativo poderá fazer chamadas à API da Azure para obter uma resposta mais detalhada ou avançada.
-O processamento mais pesado (como reconhecimento de ambientes complexos ou reconhecimento de voz em diferentes idiomas) pode ser delegado à nuvem.
+Tecnologias Utilizadas:
 
-3. Oracle Cloud Infrastructure (Backup e Armazenamento)
-Função: Fornecer backup de dados de usuários, imagens processadas e histórico de interações, além de armazenar o banco de dados com os perfis de rostos conhecidos pelo usuário.
-Serviços Envolvidos:
-OCI Object Storage: Para armazenar dados de backup, como imagens de treinamento, perfis de usuários e dados de modelos de IA.
-OCI Database: Para armazenar dados relacionados ao reconhecimento facial (banco de dados de rostos conhecidos), estatísticas de uso do aplicativo, e logs de interação.
-Como Funciona:
-Sempre que um novo rosto ou objeto for identificado e precisar ser armazenado, o aplicativo pode enviar esses dados para a Oracle Cloud para backup seguro.
-Isso garante que, se o usuário trocar de dispositivo ou reinstalar o app, o histórico e as configurações estejam preservados.
-Arquitetura Geral:
-Dispositivo Móvel (App):
+Backend
+Java Spring Boot (API REST)
+MySQL (Banco de dados)
+Azure Cognitive Services (Reconhecimento de objetos)
+Spring Security + JWT (Autenticação e Autorização)
 
-Executa TensorFlow Lite para o reconhecimento em tempo real de rostos e objetos.
-Envia solicitações para a Azure Cognitive Services API quando for necessário processamento adicional ou quando o dispositivo não puder lidar com a carga local.
-Interface acessível com feedback auditivo e/ou tátil usando Azure Speech.
-Backend na Nuvem:
-
-Azure Cognitive Services lida com processamento avançado e retornos rápidos para o aplicativo.
-Oracle Cloud Infrastructure faz o backup e armazenamento de dados críticos, como perfis de reconhecimento facial e logs de interações.
-Banco de Dados e Backup:
-
-OCI Object Storage e OCI Database armazenam e gerenciam dados de usuários, imagens, e modelos de IA, garantindo segurança e disponibilidade dos dados.
-Benefícios dessa Arquitetura:
-Desempenho Local (TensorFlow Lite): A maior parte do processamento pode ser feita localmente, reduzindo a dependência de conexão com a internet.
-Escalabilidade com Azure Cognitive Services: Funcionalidades mais avançadas podem ser realizadas via nuvem, permitindo uma aplicação leve no dispositivo, mas com capacidades robustas.
-Backup Seguro com OCI: O uso da Oracle Cloud garante que os dados do usuário estejam sempre disponíveis e protegidos, mesmo em casos de falha de dispositivo ou desinstalação do aplicativo.
+Frontend
+React.js (Interface do usuário)
+React Router (Gerenciamento de navegação)
+Context API (Gerenciamento de autenticação)
+Styled Components (Estilização)
 
 Estrutura do Projeto:
 Organizamos o projeto de acordo com o padrão MVC, seguindo os princípios de S.O.L.I.D. e utilizando Java 8, Maven e Spring Boot.
@@ -366,8 +339,8 @@ Definir as rotas da API.
 *******************************
 
 Fase 3: Integração de Funcionalidades
-Integração com TensorFlow Lite:
-Treinar e converter modelos de reconhecimento de objetos para o formato TensorFlow Lite.
+Integração com Azure Cognitive Services:
+Treinar e converter modelos de reconhecimento de objetos para o YOLOV.
 Integrar o modelo no aplicativo Java.
 Integração com Azure Cognitive Services:
 
@@ -380,7 +353,7 @@ Integrar o feedback auditivo com a lógica de reconhecimento de objetos.
 Integração de Localização (GPS):
 
 Implementar a captura de dados de localização usando Android Location Services.
-Integrar informações de mapas usando a Google Maps API.
+Integrar informações de mapas usando a Google Maps API.(provavelmente sera outra ferramenta)
 
 *****************************************************************************************
 Fase 4: Testes e Ajustes
@@ -417,8 +390,8 @@ Desenvolver Classes e Serviços:
 Seguir a estrutura MVC para criar classes de modelo, repositórios e serviços.
 Implementar a lógica de negócio conforme os requisitos definidos.
 
-Integrar TensorFlow Lite e Azure:
-Treinar modelos de IA em Python e convertê-los para TensorFlow Lite.
+Integrar Azure:
+Treinar modelos de IA.
 Configurar chamadas à Azure Cognitive Services para recursos de análise de imagem.
 
 Implementar Funcionalidades de Localização:

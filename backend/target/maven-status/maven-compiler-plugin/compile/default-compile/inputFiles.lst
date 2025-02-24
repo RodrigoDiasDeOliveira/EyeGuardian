@@ -1,0 +1,8 @@
+/workspaces/EyeGuardian/backend/src/main/java/com/eyeguardian/config/AzureConfig.java
+/workspaces/EyeGuardian/backend/src/main/java/com/eyeguardian/controllers/RecognizedObjectController.java
+/workspaces/EyeGuardian/backend/src/main/java/com/eyeguardian/models/LocationData.java
+/workspaces/EyeGuardian/backend/src/main/java/com/eyeguardian/models/RecognizedObject.java
+/workspaces/EyeGuardian/backend/src/main/java/com/eyeguardian/repository/RecognizedObjectRepository.java
+/workspaces/EyeGuardian/backend/src/main/java/com/eyeguardian/services/AudioFeedbackService.java
+/workspaces/EyeGuardian/backend/src/main/java/com/eyeguardian/services/LocationService.java
+/workspaces/EyeGuardian/backend/src/main/java/com/eyeguardian/services/RecognizedObjectService.java

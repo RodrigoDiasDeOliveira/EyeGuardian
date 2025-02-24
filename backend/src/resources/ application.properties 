@@ -1,7 +1,16 @@
-# application.properties
+# Configuração do Banco de Dados
 spring.datasource.url=jdbc:mysql://localhost:3306/eyeguardian
 spring.datasource.username=root
-spring.datasource.password=yourpassword
+spring.datasource.password=sua_senha
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+# JPA / Hibernate
 spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
 spring.jpa.hibernate.ddl-auto=update
+
+# Porta do servidor
+server.port=8080
+
+# Configuração do JWT (ajustar depois)
+jwt.secret=minha-chave-secreta
+jwt.expiration=86400000  # 1 dia
