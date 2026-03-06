@@ -56,7 +56,7 @@ Tecnologias Utilizadas:
 
 Backend
 Java Spring Boot (API REST)
-MySQL (Banco de dados)
+PostGres 
 Azure Cognitive Services (Reconhecimento de objetos)
 Spring Security + JWT (Autenticação e Autorização)
 
@@ -289,8 +289,8 @@ public class AzureConfig {
 6. Arquivo application.properties
 Configurações da aplicação.
 
-properties
-Copiar código
+
+
 spring.datasource.url=jdbc:oracle:thin:@localhost:1521:orcl
 spring.datasource.username=your_username
 spring.datasource.password=your_password
@@ -370,6 +370,7 @@ Ajustar funcionalidades com base no feedback recebido.
 *********************************************************************************************
 Fase 5: Implementação e Lançamento
 Configuração da Infraestrutura na Nuvem:
+garantindo o armazenamento Azure e replicacao para Oracle.
 Configurar o Oracle OCI para backup de dados.
 Garantir que o aplicativo possa acessar os serviços da Azure e Oracle.
 
@@ -383,7 +384,7 @@ Criar um novo projeto Maven.
 Adicionar as dependências necessárias ao pom.xml.
 Configurar o Banco de Dados:
 
-Criar um banco de dados no Oracle ou MySQL.
+Criar um banco de dados no Azure e previsao de replicacao de dados e backup na Oracle OCI.
 Configurar a conexão no arquivo application.properties.
 
 Desenvolver Classes e Serviços:
