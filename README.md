@@ -407,3 +407,20 @@ Preparar para Lançamento:
 Revisar todo o código e documentação.(voce deveria~!!!)
 Configurar o Oracle OCI para backup e armazenamento de dados.se nao tem conta tem de criar a conta!!!
 
+
+
+## Current implementation status and limitations
+
+The repository contains a frontend and a Java backend, but the presence of these components should not be interpreted as proof that all assistive features are integrated end to end.
+
+| Capability | Evidence in the inspected source | Current documentation status |
+|---|---|---|
+| Recognized-object records | `backend/src/main/java/com/eyeguardian/controllers/RecognizedObjectController.java` exposes CRUD-style record endpoints. | Backend record management is present; this does not demonstrate camera-based visual recognition. |
+| Object processing | `RecognizedObjectService.java` formats a string from an object name. | Placeholder processing; visual inference is not evidenced by this service. |
+| Audio feedback | `AudioFeedbackService.java` writes a message to standard output. | Simulated output; not a verified text-to-speech integration. |
+| Location | `LocationService.java` returns fixed coordinates and includes a simulation comment. | Simulated location; not live device GPS. |
+| Azure | `AzureConfig.java` returns a placeholder connection string and includes a simulation comment. | Not a verified Azure service integration. |
+| Frontend API | `frontend/src/services/api.js` points to `http://localhost:5000/api`; the inspected controller maps `/recognized-objects`. | Reconcile port, base path, and route mapping before describing the frontend/backend path as integrated. |
+| Build artifacts | The repository tree includes `backend/target`, compiled classes, and a JAR. | Decide and document whether generated build outputs belong in version control. |
+
+Facial recognition, environment description, indoor navigation, live GPS, and real-time audio should be labelled **planned or not verified** unless separate implementation and test evidence is added. No end-to-end or device test was performed by this documentation change.
